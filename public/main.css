@@ -1,0 +1,15 @@
+body {
+  background-color: #ccc;
+}
+
+.front {
+  color: red;
+}
+
+.back {
+  color: yellow;
+}
+
+.full {
+  color: green;
+}

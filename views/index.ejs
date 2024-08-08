@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./main.css">
+  </head>
+  <body>
+    <h1>안녕</h1>
+    
+
+    <p><%= "눈" + "아프다" %></p>
+
+    <p><%= 10-2 %></p>
+
+    <p><%= true? "맞아요":"아니에요" %></p>
+    <p><%= false? "맞아요":"아니에요" %></p>
+
+    <p><%= "<h3>escaped</h3>"  %></p>
+    <p><%- "<h3>unescaped</h3>"  %></p>
+
+    <div><% let str = "눈아프다" %></div>
+    <div><%= str %></div>
+
+    <div><% if(true){ %></div>
+      <h2>출력합니다.</h2>
+    <div><% } %></div>
+
+    <div><% if(false){ %></div>
+      <h2>출력하지 않습니다.</h2>
+    <div><% } %></div>
+
+    <div><% if(true){ %></div>
+      <div>참</div>
+      <div><% } else{ %></div>
+        <div>거짓</div>
+        <div><% } %></div>
+      <div>
+        <%for(let i=1; i<=3; i++) { %> 
+          <div><a href="/order/<%= i %>">test <%= i %>로</a></div>
+          <% } %>
+        </div>
+      
+
+<ul>
+  <% for(let person of people){ %>
+    <li><%= person.name %></li>
+    <% } %>
+  </ul>
+
+  <div class="container">
+    <h1>List</h1>
+    <form action="/addTask" method="POST">
+      <input type="text" name="newTask" placeholder="쓰셈">
+      <button type="submit">추가</button>
+    </form>
+    <ul>
+      <% tasks.forEach(task=>{ %>    
+      <li>
+        <%= task  %>
+          <form action="deleteTask" method="POST">
+            <input type="hidden" name="task" value="<%= task %>">
+            <button type="submit">지우기</button>
+          </form>
+      </li>
+      <% }) %>
+    </ul>
+  </div>
+
+  <ul>
+    <% users2.forEach(user => { %>
+    <li class="<%= user.role %>">
+      name : <%= user.name %> / age : <%= user.age %> 
+      / <%= user.age >= 18 ? "age pass":"age reject" %>
+    </li>
+    <% }) %>
+  </ul>
+  </body>
+</html>
